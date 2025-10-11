@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 // Modelo de pago
 const PaymentSchema = new mongoose.Schema({
@@ -7,4 +7,6 @@ const PaymentSchema = new mongoose.Schema({
   status: { type: String, default: 'pending' },
 });
 
-module.exports = mongoose.model('Payment', PaymentSchema);
+const PaymentSchemaModel = mongoose.model('Payment', PaymentSchema);
+
+export { PaymentSchemaModel }; 

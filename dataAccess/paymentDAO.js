@@ -1,4 +1,4 @@
-const Payment = require('../models/payment');
+import { PaymentSchemaModel as Payment } from '../models/payment.js';
 
 const createPayment = async (amount, currency) => {
     const payment = new Payment({ amount, currency });
@@ -13,4 +13,4 @@ const updatePaymentStatus = async (id, status) => {
     return await Payment.findByIdAndUpdate(id, { status }, { new: true });
 };
 
-module.exports = { createPayment, getPaymentById, updatePaymentStatus };
+export { createPayment, getPaymentById, updatePaymentStatus };

@@ -1,10 +1,14 @@
-const express = require('express');
-const cors = require('cors');
+import express from 'express';
+import cors from 'cors';
+import { globalErrorHandler, AppError } from './utils/appError.js';
+import morgan from 'morgan';
+import dotenv from 'dotenv';
+import * as db from './config/db.js';
+
+dotenv.config({ path: './variables.env' });
+
 const app = express();
-const { globalErrorHandler, AppError } = require('./utils/appError');
-const morgan = require('morgan');
-require('dotenv').config({ path: './variables.env' });
-const db = require('./config/db');
+
 
 db.conectar();
 
@@ -17,7 +21,7 @@ app.use(express.urlencoded({ extended: true }));
 
 
 
-app.all('*', (req, res, next) => {
+app.use((req, res, next) => {
   const error = new AppError(`No se pudo acceder a: ${req.originalUrl} en el servidor.`, 404);
   next(error);
 })

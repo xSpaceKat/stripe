@@ -1,4 +1,4 @@
-const winston = require('winston');
+import winston from 'winston';
 
 const logger = winston.createLogger({
     level: 'error',
@@ -16,7 +16,7 @@ class AppError extends Error {
         this.status = `${statusCode}`.startsWith('4') || `${statusCode}`.startsWith('5') ? 'fail' : 'error';
         this.isOperational = true;
 
-        Error.captureStackTrace(this, this.contructor);
+        Error.captureStackTrace(this, this.constructor);
     }
 }
 
@@ -32,7 +32,7 @@ const globalErrorHandler = (err, req, res, next) => {
     });
 }
 
-module.exports = {
+export {
     AppError,
     globalErrorHandler,
 }

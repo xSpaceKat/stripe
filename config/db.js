@@ -1,5 +1,5 @@
 
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const config = {
     url: process.env.URL_MONGO,
@@ -16,4 +16,4 @@ function desconectar() {
     return mongoose.disconnect();
 }
 
-module.exports = { conectar, desconectar };
+export { conectar, desconectar };
