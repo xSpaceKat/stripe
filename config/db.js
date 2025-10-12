@@ -1,5 +1,7 @@
 
 import mongoose from 'mongoose';
+import dotenv from 'dotenv';
+dotenv.config({ path: 'variables.env' });
 
 const config = {
     url: process.env.URL_MONGO,
