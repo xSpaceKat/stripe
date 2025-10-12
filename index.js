@@ -2,13 +2,9 @@ import express from 'express';
 import cors from 'cors';
 import { globalErrorHandler, AppError } from './utils/appError.js';
 import morgan from 'morgan';
-import dotenv from 'dotenv';
 import * as db from './config/db.js';
 
-dotenv.config({ path: './variables.env' });
-
 const app = express();
-
 
 db.conectar();
 
